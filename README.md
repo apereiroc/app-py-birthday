@@ -18,7 +18,18 @@ Run the container with
 docker run --publish 5001:5000 --detach appy-bday-image
 ```
 
-Run the container with volumes for **development**
+## Tricks for development
+
+Create a virtual environment for dev-tools, linting, etc 
+
+```bash
+python3 -m venv env-app-py
+source env-app-py/bin/activate
+pip install -r requirements.txt
+```
+
+
+Run the container with volumes, so the app is refreshed when the code is changed
 
 ```bash
 docker run --publish 5001:5000 --volume $(pwd):/app --detach appy-bday-image
