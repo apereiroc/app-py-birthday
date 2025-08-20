@@ -17,3 +17,9 @@ Run the container with
 ```bash
 docker run --publish 5001:5000 --detach appy-bday-image
 ```
+
+Run the container with volumes for **development**
+
+```bash
+docker run --publish 5001:5000 --volume $(pwd):/app --detach appy-bday-image
+```
