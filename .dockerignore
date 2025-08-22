@@ -1,0 +1,41 @@
+# python cache/compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# virtual environments
+.env
+.venv
+env/
+venv/
+
+# distribution / packaging
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# git
+.git
+.gitignore
+.gitattributes
+
+# editor stuff
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# logs and temporary files
+*.log
+*.tmp
+*.bak
+.DS_Store
+
+# docker files we don't want in the build context
+docker-compose*.yaml
+
+# more trash for the build
+*.md
+LICENSE
