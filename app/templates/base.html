@@ -1,0 +1,56 @@
+<!-- base.html -  base template for all the pages -->
+<!DOCTYPE html>
+<!-- language -->
+<html lang="en">
+
+<!-- Section head -->
+<head>
+    <!-- special charset -->
+    <meta charset="UTF-8">
+    <!-- viewport - good for phones. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Block title. Jinja defines a "hole" that other pages can fill -->
+    <title>{% block title %}Hello world{% endblock %}</title>
+    <!-- import Bootstrap CSS for style -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<!-- Body: visible content -->
+<body>
+    <!-- navigation bar at the top of every page (comes from bootstrap) -->
+    <!-- nav: tag for navigation  -->
+    <!-- navbar: Bootstrap class for navigation component -->
+    <!-- navbar-expand-lg: Responsive - collapse on small screens, expand on large (lg) screens -->
+    <!-- navbar-dark: White text color for dark backgrounds -->
+    <!-- bg-primary: Bootstrap's primary blue background color -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <!-- div: general container (like a box) -->
+        <!-- container: Bootstrap utility for centered, responsive layout with padding -->
+        <div class="container">
+            <!-- a: link. When clicking, goes to href (index in this case) -->
+            <!-- navbar-brand: Boostrap style for the logo -->
+            <a class="navbar-brand" href="/">🎂 Birthdays</a>
+
+            <!-- Jinja template logic to check session state -->
+            {% if session.authenticated %}
+            <!-- navbar-nav: container for navigation links -->
+            <!-- ms-auto: Bootstrap margin-start auto - pushes content to the right side -->
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/logout">Logout</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- main container: page-specific content -->
+    <!-- container: Bootstrap responsive container with automatic margins -->
+    <!-- mt-4: Bootstrap margin-top utility (4 = 1.5rem spacing) -->
+    <div class="container mt-4">
+        <!-- content block that child templates will fill -->
+        <!-- this is where page-specific HTML content gets inserted -->
+        {# Each child template defines {% block content %} to fill this area #}
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
