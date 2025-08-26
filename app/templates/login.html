@@ -1,0 +1,69 @@
+<!-- login.html - authentication page template -->
+<!-- extends base.html to inherit common structure (navbar, footer, etc.) -->
+{% extends "base.html" %}
+
+<!-- override the default page title from base template -->
+{% block title %}Login{% endblock %}
+
+<!-- main content area - replaces block content from base.html -->
+{% block content %}
+<!-- Bootstrap grid system for responsive centering -->
+<!-- row: creates a horizontal group of columns -->
+<!-- justify-content-center: centers the column horizontally -->
+<div class="row justify-content-center">
+    <!-- column definitions for responsive design -->
+    <!-- col-md-6: takes 6/12 columns (50% width) on medium+ screens -->
+    <!-- col-lg-4: takes 4/12 columns (33% width) on large+ screens -->
+    <!-- this creates a narrower login form on larger screens -->
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow">
+            <div class="card-header text-center bg-primary text-white">
+                <h4>🔐 Access</h4>
+            </div>
+            <!-- main card content area -->
+            <div class="card-body">
+                <!-- conditional error message display -->
+                <!-- only renders if 'error' variable is passed from Flask route -->
+                <!-- typically shown when password is incorrect -->
+                {% if error %}
+                <!-- Bootstrap alert component for error messages -->
+                <!-- alert-danger: red styling for errors -->
+                <!-- alert-dismissible: allows users to close the alert -->
+                <!-- fade show: CSS classes for smooth appearance animation -->
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+                {% endif %}
+
+                <!-- login form - submits to same URL with POST method -->
+                <!-- Flask will handle GET (show form) and POST (process form) -->
+                <form method="POST">
+                    <!-- form group for password input with proper spacing -->
+                    <!-- mb-3: Bootstrap margin-bottom utility (3 = 1rem) -->
+                    <div class="mb-3">
+                        <!-- label associated with password input for accessibility -->
+                        <!-- for="password": links to input with id="password" -->
+                        <label for="password" class="form-label">Password</label>
+                        <!-- password input field -->
+                        <!-- type="password": hides input characters with dots -->
+                        <!-- form-control: Bootstrap styling for consistent input appearance -->
+                        <!-- id="password": links with label, used for javascript targeting -->
+                        <!-- name="password": form field name sent to Flask -->
+                        <!-- required: HTML5 validation, prevents empty submission -->
+                        <!-- autofocus: automatically focuses this field when page loads -->
+                        <input type="password" class="form-control" id="password" name="password" required autofocus>
+                    </div>
+                    <!-- submit button container -->
+                    <!-- d-grid: Bootstrap utility to make button full width -->
+                    <div class="d-grid">
+                        <!-- submit button -->
+                        <!-- type="submit": submits the form when clicked -->
+                        <!-- btn btn-primary: Bootstrap button with primary blue styling -->
+                        <button type="submit" class="btn btn-primary">Entrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
